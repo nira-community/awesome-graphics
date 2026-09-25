@@ -1,7 +1,9 @@
 name: Sync README from Gist
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"    # daily safety net, midnight UTC
+  workflow_dispatch:                      # manual trigger
 
 permissions:
   contents: write
@@ -28,6 +30,7 @@ jobs:
         run: |
           if [ ! -s README.md ] || grep -q "^null$" README.md; then
             echo "::error::README.md is empty or null — aborting commit"
+            cat gist_response.json
             exit 1
           fi
 
