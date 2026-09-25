@@ -20,7 +20,13 @@ jobs:
           curl -s -H "Authorization: Bearer $GH_TOKEN" \
                -H "Accept: application/vnd.github+json" \
                "https://api.github.com/gists/ceef71527b4f15869133ba7b397912e9" \
-            | jq -r '.files["cgp.md"].content' > README.md
+            -o gist_response.json -w "HTTP status: %{http_code}\n"
+
+          echo "--- First 500 chars of response ---"
+          head -c 500 gist_response.json
+          echo ""
+
+          jq -r '.files["cgp.md"].content' gist_response.json > README.md
 
       - name: Verify README is not empty
         run: |
