@@ -1,0 +1,31 @@
+name: Sync README from Gist
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch gist content
+        run: |
+          curl -s "https://api.github.com/gists/ceef71527b4f15869133ba7b397912e9" \
+            | jq -r '.files["cgp.md"].content' > README.md
+
+      - name: Commit if changed
+        run: |
+          git config user.name "gist-sync-bot"
+          git config user.email "actions@github.com"
+          if ! git diff --quiet README.md; then
+            git add README.md
+            git commit -m "sync README from gist"
+            git push
+          else
+            echo "No changes to README.md"
+          fi
