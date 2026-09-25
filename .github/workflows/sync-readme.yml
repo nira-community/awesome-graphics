@@ -15,16 +15,12 @@ jobs:
 
       - name: Fetch gist content
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GIST_PAT }}
         run: |
           curl -s -H "Authorization: Bearer $GH_TOKEN" \
                -H "Accept: application/vnd.github+json" \
                "https://api.github.com/gists/ceef71527b4f15869133ba7b397912e9" \
             -o gist_response.json -w "HTTP status: %{http_code}\n"
-
-          echo "--- First 500 chars of response ---"
-          head -c 500 gist_response.json
-          echo ""
 
           jq -r '.files["cgp.md"].content' gist_response.json > README.md
 
