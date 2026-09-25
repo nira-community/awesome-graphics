@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Awesome Low Level</title>
+    <meta name="description"
+        content="A curated collection of resources for learning low-level programming from the ground up" />
+    <link rel="icon" href="./assets/fav.jpg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <button id="navToggle" class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+    <div class="scrim" id="scrim"></div>
+
+    <div class="app-shell">
+
+        <aside class="sidebar" id="sidebar" aria-label="Site navigation">
+            <a class="sidebar-brand" href="#">
+                <span class="sidebar-brand-title">Nira</span>
+                <span class="sidebar-brand-tag">Awesome Graphics</span>
+            </a>
+
+            <nav class="sidebar-nav">
+                <p class="sidebar-label">Contents</p>
+                <div id="toc" class="toc">
+                    <div class="toc-skeleton">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a id="sourceLink" class="source-link" href="#" target="_blank" rel="noopener">Source on GitHub</a>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <div class="content" id="content">
+                <p class="status">Loading README from GitHub…</p>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/11.1.1/marked.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" defer></script>
+    <script src="toc.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+
+</html>
