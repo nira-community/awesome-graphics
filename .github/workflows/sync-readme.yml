@@ -34,6 +34,11 @@ jobs:
             exit 1
           fi
 
+      - name: Set README title
+        run: |
+          # Replace only the first H1 line with the fixed title
+          sed -i '0,/^# .*/s//# Awesome Graphics/' README.md
+
       - name: Commit if changed
         run: |
           git config user.name "gist-sync-bot"
