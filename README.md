@@ -1,4 +1,4 @@
-# Computer Graphics Programming Resources
+# Awesome Graphics
 
 List of freely available resources to study computer graphics programming.
 
